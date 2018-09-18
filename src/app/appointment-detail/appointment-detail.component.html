@@ -1,0 +1,48 @@
+<!-- appointment detail form with appointment related fields -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2>Appointment Form</h2><br>
+        <form class="form-horizontal" (ngSubmit)="submitAppointment()" #appointmentDetailForm="ngForm">
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="firstName">First name:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" 
+                required
+                [(ngModel)]="appointment.firstName"
+               #firstName="ngModel"
+              id="firstName" placeholder="Enter First name" name="firstName">
+              <div [hidden]="firstName.valid || firstName.pristine"
+                  class="alert alert-danger">
+                  First Name is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="lastName">Last name:</label>
+            <div class="col-sm-9">          
+              <input type="text" class="form-control" 
+              id="lastName" placeholder="Enter Last name" name="lastName"
+              required [(ngModel)]="appointment.lastName" #lastName="ngModel">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="phoneNo">Phone Number:</label>
+            <div class="col-sm-9">          
+              <input type="number" class="form-control" 
+              id="phoneNo" placeholder="Enter Phone number" name="phoneNo"
+              required [(ngModel)]="appointment.phoneNo" #phoneNo="ngModel">
+            </div>
+          </div>
+          <div class="form-group">        
+            <div class="col-sm-offset-3 col-sm-9">
+              <button type="button" class="btn btn-default" (click)="cancelAppointmentForm()">Cancel</button>
+              <button type="submit" class="btn btn-default" [disabled]="!appointmentDetailForm.form.valid">Submit</button>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

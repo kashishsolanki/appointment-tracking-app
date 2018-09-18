@@ -1,0 +1,19 @@
+<!-- Load timeslot and display as list -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h2>Appointment TimeSlots</h2><br>
+      <div class="list-group">
+        <a *ngFor="let appointment of appointmentList" 
+            routerLink="/appointment-detail/{{appointment.id}}" 
+            class="list-group-item"
+            [ngClass]="{'list-group-item-danger': appointment.isBooked == true}">
+          {{appointment.timeSlot}}
+          <span class="badge" *ngIf="appointment.isBooked">Booked</span>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
